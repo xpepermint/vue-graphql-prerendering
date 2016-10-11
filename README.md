@@ -5,6 +5,10 @@
 ## Build Setup
 
 ``` bash
+# run Graphql server
+cd ./graphserver
+npm start
+
 # install dependencies
 npm install
 
