@@ -1,0 +1,22 @@
+{
+  "name": "vgraph",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "babel-node ./src/scripts/start.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "2.8.1",
+    "express": "5.0.0-alpha.2",
+    "express-graphql": "0.5.4",
+    "graphql": "0.7.2"
+  },
+  "devDependencies": {
+    "babel-cli": "6.16.0",
+    "babel-preset-node5": "11.1.0"
+  }
+}
