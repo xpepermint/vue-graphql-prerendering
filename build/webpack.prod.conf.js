@@ -10,6 +10,8 @@ var env = process.env.NODE_ENV === 'testing'
   ? require('../config/test.env')
   : config.build.env
 
+var PrerenderSpaPlugin = require('prerender-spa-plugin')
+
 var webpackConfig = merge(baseWebpackConfig, {
   module: {
     loaders: utils.styleLoaders({ sourceMap: config.build.productionSourceMap, extract: true })
@@ -77,7 +79,20 @@ var webpackConfig = merge(baseWebpackConfig, {
     new webpack.optimize.CommonsChunkPlugin({
       name: 'manifest',
       chunks: ['vendor']
-    })
+    }),
+
+    new PrerenderSpaPlugin(
+      path.join(__dirname, '..', 'dist'),
+      [ '/', '/foo', '/bar' ],
+      {
+        captureAfterTime: 5000,
+        maxAttempts: 10,
+        phantomOptions: '--disk-cache=true',
+        phantomPageSettings: {
+          loadImages: true
+        }
+      }
+    )
   ]
 })
 
